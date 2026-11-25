@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>KanzenChikan2.ProgressPanel</AssemblyName>
+    <Version>1.3.0</Version>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GameDir Condition="'$(GameDir)' == ''">$(KANZENCHIKAN2_GAME_DIR)</GameDir>
+    <BepInExDir>$(GameDir)\BepInEx</BepInExDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="src\*.cs" />
+    <EmbeddedResource Include="assets\ChineseAtlas.gz" LogicalName="KanzenChikan2.ProgressPanel.ChineseAtlas" />
+    <EmbeddedResource Include="assets\OFL-NotoSansSC.txt" LogicalName="KanzenChikan2.ProgressPanel.OFL" />
+    <InternalsVisibleTo Include="KanzenChikan2.ProgressPanel.Checks" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx.Core" HintPath="$(BepInExDir)\core\BepInEx.Core.dll" Private="false" />
+    <Reference Include="BepInEx.Unity.IL2CPP" HintPath="$(BepInExDir)\core\BepInEx.Unity.IL2CPP.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(BepInExDir)\core\0Harmony.dll" Private="false" />
+    <Reference Include="Il2CppInterop.Runtime" HintPath="$(BepInExDir)\core\Il2CppInterop.Runtime.dll" Private="false" />
+    <Reference Include="Assembly-CSharp" HintPath="$(BepInExDir)\interop\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="PlayMaker" HintPath="$(BepInExDir)\interop\PlayMaker.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(BepInExDir)\interop\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="UnityEngine.IMGUIModule" HintPath="$(BepInExDir)\interop\UnityEngine.IMGUIModule.dll" Private="false" />
+    <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(BepInExDir)\interop\UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="Il2Cppmscorlib" HintPath="$(BepInExDir)\interop\Il2Cppmscorlib.dll" Private="false" />
+  </ItemGroup>
+
+  <Target Name="CheckGameReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="'$(GameDir)' == ''" Text="Set GameDir to the KanzenChikan2 installation folder." />
+    <Error Condition="!Exists('$(BepInExDir)\core\BepInEx.Unity.IL2CPP.dll')" Text="BepInEx 6 for Windows x64 IL2CPP is missing in GameDir." />
+    <Error Condition="!Exists('$(BepInExDir)\interop\Assembly-CSharp.dll')" Text="The game interop DLLs are missing. Run the game once with BepInEx to generate them." />
+  </Target>
+</Project>

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>KanzenChikan2.ProgressPanel.Checks</AssemblyName>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KanzenChikan2.ProgressPanel.csproj" />
+    <None Include="..\src\ProgressPanel.cs;..\src\ProgressPanel.Vision.cs">
+      <Link>ui\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
