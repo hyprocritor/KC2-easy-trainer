@@ -15,6 +15,17 @@ This Project is using  MIT license.
 - 当前值可手动编辑。总警戒值、基础发现风险和五个视觉感知槽可锁定。
 - 中文字形随插件嵌入。字形来自 Noto Sans SC，授权见 [字体许可证](assets/OFL-NotoSansSC.txt)。
 
+## 下载与安装
+
+[下载 KC2 Easy Trainer v1.3.0](https://github.com/hyprocritor/KC2-easy-trainer/releases/download/v1.3.0/KC2-easy-trainer-v1.3.0.zip)
+
+1. 下载 Windows x64 的 Unity IL2CPP 版 [BepInEx 6.0.0-be.793](https://builds.bepinex.dev/projects/bepinex_be/793/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.793%2Bdbc82f0.zip)。
+2. 将 BepInEx ZIP 的内容解压到游戏根目录，使 `winhttp.dll` 和 `KanzenChikan2.exe` 位于同一级。
+3. 启动游戏一次。首次启动需要生成 IL2CPP 互操作文件，可能会慢一些。进入主菜单后退出游戏。
+4. 将修改器 ZIP 解压到游戏根目录，保留其中的 `BepInEx/plugins/` 路径。再次启动游戏，按 **F8** 打开面板。
+
+[BepInEx 官方安装指南](https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html)
+
 ## 项目文件
 
 - [src](src) 包含插件入口、游戏变量与倍率、面板及字形渲染源码。
